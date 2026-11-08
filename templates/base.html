@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Zero Trust Simulator{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">ZT</span><div><strong>ZERO TRUST</strong><small>ACCESS CONTROL</small></div></div>
+    <nav>
+      <a class="{{ 'active' if request.endpoint == 'dashboard' }}" href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a class="{{ 'active' if request.endpoint in ['simulate','scenario'] }}" href="{{ url_for('simulate') }}">Access Simulator</a>
+      <a class="{{ 'active' if request.endpoint == 'dataset' }}" href="{{ url_for('dataset') }}">Dataset Lab</a>
+      <a class="{{ 'active' if request.endpoint == 'logs' }}" href="{{ url_for('logs') }}">Decision Logs</a>
+      <a class="{{ 'active' if request.endpoint == 'policy' }}" href="{{ url_for('policy') }}">Policy Settings</a>
+      <a class="{{ 'active' if request.endpoint == 'about' }}" href="{{ url_for('about') }}">Architecture</a>
+    </nav>
+    <div class="principle">NEVER TRUST<br><strong>ALWAYS VERIFY</strong></div>
+  </aside>
+  <main class="main">
+    <header><div><span class="eyebrow">ENTERPRISE SECURITY LAB</span><h1>{% block heading %}Dashboard{% endblock %}</h1></div><span class="status"><i></i> Policy engine online</span></header>
+    {% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
+

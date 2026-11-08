@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<section class="hero"><div><span class="tag">CONTEXT-AWARE AUTHORIZATION</span><h2>Every request earns its access.</h2><p>Evaluate identity, device, location, authentication and behaviour before granting the minimum required privilege.</p><a class="button" href="{{ url_for('simulate') }}">Evaluate a request</a></div><div class="shield">ZT<span>RISK ENGINE</span></div></section>
+<div class="stats">
+  <article><small>TOTAL REQUESTS</small><strong>{{ stats.total or 0 }}</strong></article>
+  <article class="allow"><small>ALLOWED</small><strong>{{ stats.allowed or 0 }}</strong></article>
+  <article class="challenge"><small>CHALLENGED</small><strong>{{ stats.challenged or 0 }}</strong></article>
+  <article class="deny"><small>DENIED</small><strong>{{ stats.denied or 0 }}</strong></article>
+  <article><small>AVG. RISK</small><strong>{{ stats.average_risk or 0 }}</strong></article>
+</div>
+<div class="grid two"><section class="panel"><div class="panel-head"><h3>Quick scenarios</h3><span>One-click demonstration</span></div><div class="scenario-list">
+  <a href="{{ url_for('scenario', name='normal') }}"><b>01</b><div><strong>Normal employee</strong><small>Known context + MFA</small></div><em>ALLOW</em></a>
+  <a href="{{ url_for('scenario', name='suspicious') }}"><b>02</b><div><strong>Suspicious session</strong><small>Mixed trust signals</small></div><em>CHALLENGE</em></a>
+  <a href="{{ url_for('scenario', name='critical') }}"><b>03</b><div><strong>Critical threat</strong><small>Multiple anomalies</small></div><em>DENY</em></a>
+</div></section><section class="panel"><div class="panel-head"><h3>Recent decisions</h3><a href="{{ url_for('logs') }}">View all</a></div><div class="mini-log">{% for row in recent %}<div><span class="dot {{ row.decision|lower }}"></span><b>{{ row.user_id }}</b><small>{{ row.resource }}</small><strong>{{ row.risk_score }}</strong></div>{% else %}<p class="empty">Run a scenario to create the first decision.</p>{% endfor %}</div></section></div>
+{% endblock %}
+

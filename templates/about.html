@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block heading %}System Architecture{% endblock %}{% block content %}
+<section class="panel architecture"><div><b>01</b><h3>Access request</h3><p>User asks for an enterprise resource.</p></div><div><b>02</b><h3>Context collection</h3><p>Device, location, MFA, session and behaviour.</p></div><div><b>03</b><h3>Risk engine</h3><p>Signals receive weights and form a 0–100 score.</p></div><div><b>04</b><h3>Policy decision</h3><p>Allow, challenge with MFA, or deny.</p></div><div><b>05</b><h3>Audit log</h3><p>Decision and reasons remain available for review.</p></div></section>
+<section class="panel"><h2>Project scope</h2><p>This academic simulator models the policy-decision process of a Zero Trust system. It demonstrates explicit verification, least-privilege decisions, continuous contextual evaluation and explainable audit records. It does not configure a real enterprise network or replace a production identity platform.</p></section>
+{% endblock %}
+

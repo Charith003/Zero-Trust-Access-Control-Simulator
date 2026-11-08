@@ -1,0 +1,8 @@
+user_id,resource,device_consistency,location_consistency,login_consistency,mfa_status,anomalous_activity,failed_transactions,incident_reports,password_resets,session_duration,access_frequency,sensitive_data
+EMP-101,Email Portal,1,1,1,1,0,0,0,0,32,10,0
+EMP-102,HR Portal,1,1,1,1,0,0,0,0,48,15,1
+EMP-204,Finance Dashboard,0,1,0,1,0,1,0,0,130,38,1
+EMP-205,Source Code Repository,1,0,1,0,0,2,0,1,72,33,0
+EMP-309,Customer Database,0,0,0,0,1,5,2,3,240,80,1
+EMP-310,Payroll System,0,0,0,0,1,3,1,2,180,70,1
+
